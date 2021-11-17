@@ -1,0 +1,46 @@
+[package]
+name = "paxakos"
+version = "0.10.0-dev"
+edition = "2021"
+license = "GPL-3.0-only"
+authors = [ "benshu <benshu@benshu.de>" ]
+readme = "../README.md"
+documentation = "https://docs.rs/paxakos/"
+repository = "https://github.com/benschulz/paxakos"
+description = "Rust implementation of Paxos consensus algorithm"
+keywords = [ "paxos", "consensus", "distributed" ]
+categories = [ "network-programming" ]
+
+[features]
+autofill = []
+default = []
+delegation = []
+ensure-leadership = []
+heartbeats = [ "track-leadership" ]
+leases = []
+leaser = [ "leases" ]
+master-leases = [ "either", "leases" ]
+prototyping = [ "rand", "rand_distr", "tracer" ]
+releaser = [ "leases" ]
+tracer = []
+track-leadership = []
+
+[dependencies]
+backoff = { version = "0.3", optional = true }
+either = { version = "1", optional = true }
+futures = "0.3"
+futures-timer = "3"
+num-traits = "0.2"
+pin-project = "1"
+rand = { version = "0.8", optional = true }
+rand_distr = { version = "0.4", optional = true }
+serde = { version = "1", features = [ "derive", "rc" ] }
+smallvec = "1"
+thiserror = "1"
+tracing = "0.1"
+
+[dev-dependencies]
+uuid = { version = "0.8", features = [ "serde", "v4" ] }
+
+[package.metadata.docs.rs]
+all-features = true
